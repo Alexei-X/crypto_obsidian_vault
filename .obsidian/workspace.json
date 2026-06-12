@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "INFO-F514/Untitled.md",
+                "file": "INFO-F514/ZK Proofs.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Untitled"
+              "title": "ZK Proofs"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Multivariate Cryptography.md",
+                "file": "INFO-F514/Untitled.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Multivariate Cryptography"
+              "title": "Rétrolien pour Untitled"
             }
           },
           {
@@ -165,8 +165,7 @@
               "title": "Outline of Multivariate Cryptography"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
@@ -187,16 +186,19 @@
   "active": "f2562f9b24d37da2",
   "lastOpenFiles": [
     "INFO-F514/Provable Security.md",
-    "INFO-F514/Untitled.md",
-    "INFO-F514/EVoting.md",
     "INFO-F514/Homomorphic Encryption.md",
-    "Latex Snippet.md",
-    "Untitled.md",
+    "INFO-F514/ZK Proofs.md",
+    "INFO-F514/Math Background.md",
     "INFO-F514/Exam Questions.md",
+    "INFO-F514/EVoting.md",
+    "Capture d'écran 2026-06-12 141733.png",
+    "Capture d'écran 2026-06-12 135441.png",
+    "Capture d'écran 2026-06-12 102813.png",
+    "Untitled.md",
+    "Latex Snippet.md",
     "InfoF514_03_HomEncryption_0ad0184cbb427812267c7e4cf9d479b4 2.png",
     "InfoF514_03_HomEncryption_0ad0184cbb427812267c7e4cf9d479b4.png",
     "Thesis/Hash-then-Sign Signatures.md",
-    "INFO-F514/Math Background.md",
     "GeneralCrypto/Paillier Cryptosystem.md",
     "GeneralCrypto",
     "^/tag{$0.md",
