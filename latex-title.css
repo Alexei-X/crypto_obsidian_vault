@@ -1,0 +1,37 @@
+/* Apply only when cssclasses: latex-title is set */
+.markdown-preview-view.latex-title .latex-title-block {
+  font-family: "Latin Modern Roman", "Computer Modern", serif;
+  margin: 3em auto;
+  text-align: center;
+  padding: 1em 2em;
+  border-top: 1px solid var(--divider-color);
+  border-bottom: 1px solid var(--divider-color);
+  max-width: 800px;
+}
+
+/* Document class */
+.markdown-preview-view.latex-title .documentclass {
+  font-size: 0.9em;
+  color: var(--text-faint);
+  font-style: italic;
+  margin-bottom: 1em;
+}
+
+/* Title */
+.markdown-preview-view.latex-title .title {
+  font-size: 1.8em;
+  font-weight: bold;
+  margin: 0.2em 0 0.5em;
+}
+
+/* Author */
+.markdown-preview-view.latex-title .author {
+  font-size: 1.2em;
+  margin-bottom: 0.2em;
+}
+
+/* Date */
+.markdown-preview-view.latex-title .date {
+  font-size: 1em;
+  color: var(--text-muted);
+}
