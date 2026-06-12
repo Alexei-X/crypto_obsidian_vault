@@ -59,6 +59,7 @@ cf. [[EVoting#Homomorphic encryption#Properties]].
 cf. [[EVoting#Exponential ElGamal]], property 2. 
  $$\tag*{$\blacksquare$}$$
 ### Paillier Cryptosystem
+cf. [[Paillier Cryptosystem]]
 #### Key Generation
 Let $p, q$ be large primes and $n = pq$ (as in RSA).
 Consider the group $\mathbb{Z}^*_{n^2}$ and its $n$-th roots of unity : 

@@ -1,5 +1,5 @@
 # E-Voting
-
+Math definitions : [[Math Background]]
 We want **end-to-end verifiable** voting systems, where the voters can verify that their votes are :  
 - Cast as intended
 - Recorded as cast
@@ -13,6 +13,7 @@ The main security goals of such systems are :
 	$\rightarrow$ Coercion resistance : cannot prove your vote
 There can be 2 approaches to e-voting : 
 ## Homomorphic encryption
+cf. [[Homomorphic Encryption]]
 Use encryption scheme such that $$
 \mathrm{Enc}(v_1 + v_2) = \mathrm{Enc}(v_1) \otimes \mathrm{Enc}(v_2)
 $$for some operation $\otimes$. 
@@ -25,7 +26,7 @@ The private key is $s$.
 $$for some random $r$
 - Decryption of $(c_1, c_2)$ : $$
 m' = \frac{c_2}{c_1^{s}} = \frac{mg^{sr}}{g^{sr}} = m
-$$
+$$([[Provable Security#ElGamal Encryption Protocol]])
 ### Properties
 <i>Property 1</i><br>ElGamal encryption is homomorphic. 
 <i>Proof. </i>
@@ -121,5 +122,6 @@ It has multiple version.
 - Bulletin board of votes
 - Sako-Killian proofs for mixnets
 - Chaum-Pedersen proofs for correct decryptions
+	[[ZK Proofs#ZK Protocols for DLP-related Relations]]
 - Ballot auditing
 - "Coerce me" button
