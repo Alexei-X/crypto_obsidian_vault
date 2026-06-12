@@ -166,9 +166,78 @@ Protocol :
 - Verifier sends random challenge $c$ to prover
 - Prover answers with $s = r + xc \bmod q$ 
 - Verifier checks that $g^s = Rh^c$
+#### Security Properties
+Correctness : $$
+g^s = g^{r + cx} = g^r(g^x)^x = Rh^c
+$$Special soundness : given two valid transcripts $(R, c, s), (R, c', s')$ with $c \neq c'$, one can compute $$ 
+\frac{s' - s}{c' - s} = \frac{(r + c'x) - (r + cx)}{c' - c} = x
+$$This is computational soundness since it relies on DLP hardness. 
+HVZK : simulator chooses $s$ and challenge $c$ then computes $R$. 
 ### Chaum-Pedersen Protocol (DHP)
-
+Let $G_1, G_2$ be two groups of prime order $q$ (you could have $G_1 = G_2$, but not necessarily). Let $g_1, h_2 \in G_1$, $g_2, h_2 \in G_2$ where $h_1 = g_1^x$ and $h_2 = g_2^x$ for some $x$. He wants to prove that a tuple $(g_1, h_1, g_2, h_2)$ is of this format, without revealing anything about $x$. 
+Idea : run two instances of Schnorr protocol in parallel, with the same challenge $c$ and the same answer $s$. 
+Protocol : 
+- Prover knows $x$ such that $h_1 = g_1^x$ and $h_2 = g_2^x$ 
+- Prover chooses random $r$
+- Prover sends $R_1 = g_1^r$ and $R_2 = g_2^r$ to the verifier
+- Verifier sends a random challenge $c$ 
+- Prover answers with $s = r + cx$ 
+- Verifier checks $g_1^s = R_1h_1^c$ and $g_2^s = R_2h_2^c$ 
+#### Security Properties
+Correctness : same than Schnorr
+Special soundness : following special soundness proof for Schnorr, we can extract $x_1, x_2$ and $$
+x_1 = x_2 = \frac{s' - s}{c' - c}
+$$HVZK : same than Schnorr. 
 ### Correct Decryption of ElGamal Ciphertext
-
-
+Reminder of [[EVoting#ElGamal Encryption]]. 
+The goal here is to prove that $(c_1, c_2)$ is a valid encryption of $m$ : 
+1. Knowing secret key $x$ (but not randomness $r$)
+2. Knowing randomness $r$ (but not secret key $x$)
+Solution : use Chaum-Pedersen proof with
+- $g_1 = g, h_1 = h, g_2 = c_2, h_2 = c_1m^{-1}$ 
+- then $g_1 = g, h_1 = c_2, g_2 = h, h_2 = c_1m^{-1}$ 
+An application of this is in e-voting : 
+- Many e-voting schemes use EEG ([[EVoting#Exponential ElGamal]]). 
+- Every candidate is associated an ElGamal public key
+- Voters encrypt $m = 0$ or $m = 1$ depending on whether they want to vote for the candidate
+- ElGamal is homomorphic, therefore we can combine individual ciphertexts to produce ciphertext of the sum. 
+- Voters then need to prove that their ciphertext contains either $0$ or $1$ 
+- Election authority decrypts total with ElGamal secret key, they also prove the result is correct
 ## The Fiat-Shamir Transform
+We want to remove the interaction there is the sigma protocols. 
+### Fiat-Shamir Heuristic
+$\rightarrow$ Let verifier compute the challenge, but not choose it : replace challenge by a hash of the transcript so far
+$\rightarrow$ Send commitment and response as a single message
+- You know a sigma protocol $(P, V)$
+- You know a hash function $H$, we consider it as random oracle
+- Prover computes $\alpha \leftarrow P(x, w)$
+- Prover computes $\beta \leftarrow H(x, \alpha)$
+- Prover computes $\gamma \leftarrow P(x, w, \alpha, \beta)$
+- Prover sends *non-interactive* proof $\pi = (\alpha, \gamma)$ to verifier
+- Verifier computes $\beta = H(x, \alpha)$, checks $V(x, \alpha, \beta, \gamma) = 1$
+#### Security
+To prove the security of this construction, we have to consider that $H$ is a random function, so the challenge is still uniformly distributed and cannot be chosen by the prover, otherwise the proof could be simulated. 
+In practice, however, SHA is not a perfectly random function, there is not rigorous proof even is the intuition still makes sense. 
+### Fiat-Shamir Signatures
+Consider an identification protocol $(\mathrm{KeyGen}, P, V)$ 
+- $\mathrm{KeyGen}$ generates $(SK, PK)$ pairs
+- Sigma protocol proving knowledge of the secret key associated to a public key
+- Use message as a source of randomness
+Derive a signature scheme as follows : 
+- $\mathrm{KeyGen}$ : just run $\mathrm{KeyGen}$ of the identification protocol
+- $\mathrm{Sign}$ : return $\sigma = (\alpha, \gamma)$ where 
+	- $\alpha$ is the commitment in ID protocol
+	- $\beta = H(m, PK, \alpha)$ 
+	- $\gamma$ is the response to challenge $\beta$ in ID protocol
+- $\mathrm{Verif}$ : recompute $\beta$ and verify $(\alpha, \beta, \gamma)$ 
+
+If $\alpha$ can be recomputed from $\beta$ and $\gamma$, signature $(\beta, \gamma)$ instead of $(\alpha, \gamma)$ : 
+- $\mathrm{KeyGen}$ : just run $\mathrm{KeyGen}$ of the identification protocol
+- $\mathrm{Sign}$ : return $\sigma = (\beta, \gamma)$ where 
+	- $\alpha$ is the commitment in ID protocol
+	- $\beta = H(m, PK, \alpha)$ 
+	- $\gamma$ is the response to challenge $\beta$ in ID protocol
+- $\mathrm{Verif}$ : recompute $\alpha$ and check $\beta = H(m, PK, \alpha)$
+#### Security
+To prove the security of this construction, we have to consider that $H$ is a random function, so the challenge is still uniformly distributed and cannot be chosen by the prover, otherwise the proof could be simulated. 
+In practice, however, SHA is not a perfectly random function, there is not rigorous proof even is the intuition still makes sense. 
