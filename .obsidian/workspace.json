@@ -8,13 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "f2562f9b24d37da2",
+            "id": "fce4c81a9dc9cc84",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "INFO-F514/Cryptanalysis.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Cryptanalysis"
             }
           }
         ]
@@ -179,22 +183,23 @@
       "bases:Create new base": false
     }
   },
-  "active": "f2562f9b24d37da2",
+  "active": "fce4c81a9dc9cc84",
   "lastOpenFiles": [
+    "INFO-F514/Homomorphic Encryption.md",
+    "INFO-F514/Provable Security.md",
+    "GeneralCrypto/RSA Cryptosystem.md",
+    "INFO-F514/ZK Proofs.md",
+    "GeneralCrypto/Paillier Cryptosystem.md",
+    "INFO-F514/Exam Questions.md",
+    "INFO-F514/Math Background.md",
+    "INFO-F514/Cryptanalysis.md",
+    "Capture d'écran 2026-06-12 152619.png",
     "INFO-F514/EVoting.md",
     "Chaum-Pedersen Protocol (DHP).md",
-    "INFO-F514/ZK Proofs.md",
     "Pasted image 20260612164811.png",
-    "INFO-F514/Provable Security.md",
-    "INFO-F514/Math Background.md",
-    "INFO-F514/Homomorphic Encryption.md",
-    "GeneralCrypto/Paillier Cryptosystem.md",
-    "INFO-F514/Cryptanalysis.md",
     "Capture d'écran 2026-06-12 155112.png",
     "Capture d'écran 2026-06-12 153947.png",
     "Capture d'écran 2026-06-12 153834.png",
-    "Capture d'écran 2026-06-12 152619.png",
-    "INFO-F514/Exam Questions.md",
     "Capture d'écran 2026-06-12 141733.png",
     "Capture d'écran 2026-06-12 135441.png",
     "Capture d'écran 2026-06-12 102813.png",

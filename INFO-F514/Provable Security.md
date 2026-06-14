@@ -189,6 +189,7 @@ If $N$ is smooth, then DLP is easy !
 For random $p$, factors of $p - 1$ likely to contain very small primes, some medium size primes, and one large prime. This implies that at least some information about $a$ can be recovered. 
 We consider safe primes to be primes such that $\frac{p-1}{2}$ is prime. 
 #### Weak Randomness
+[[RSA Cryptosystem#RSA Cryptosystem]]
 Suppose Alice uses RSA private key $(p, q_a)$ and Bob uses RSA private key $(p, q_b)$. Is it safe ? 
 Everybody sees $n_a := pq_a$ and $n_b = pq_b$. 
 Alice can compute $q_b = \frac{n_b}{p}$ and Bob can compute $q_a = \frac{n_a}{p}$. 

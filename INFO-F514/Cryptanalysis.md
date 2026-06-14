@@ -60,7 +60,14 @@ $$Steps :
 - Start from $g_0 := g$ and apply $f$ recursively to get $g_i$
 - If $f$ is "random enough", we obtain random elements in $G$ and a collision after $\mathcal{O}(\sqrt{\lvert G \rvert})$ elements. 
 - By the way $f$ is defined, we can keep track of $a_i, b_i$ such that $g_i = g^{a_i}h^{b_i}$ 
-- Collision gives DLP solution
+- Collision gives DLP solution : 
+$$
+\begin{cases}
+z_i = g^{a_i}h^{b_i} \\
+\Vert \\
+z_j = g^{a_j}h^{b_j}
+\end{cases} \Rightarrow x = \frac{a_j - a_i}{b_i - b_j}
+$$
 ![[Capture d'écran 2026-06-12 153834.png|500]]
 Pseudo-algorithm : 
 ![[Capture d'écran 2026-06-12 153947.png]]
